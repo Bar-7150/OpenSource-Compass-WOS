@@ -187,11 +187,8 @@ function renderPrograms(filteredPrograms = programs) {
     }
 
     container.innerHTML = filteredPrograms.map(program => `
-        <div class="program-card" onclick="openModal(${program.id})">
-            <div class="program-logo">
-                <img src="${program.image}" alt="${program.name} logo" onerror="this.src='../assets/program_logo/placeholder.png'">
-            </div>
-            
+    <div class="program-card" onclick="openModal(${program.id})">
+        <div class="program-info">
             <div class="program-header">
                 <h3>${program.name}</h3>
                 <span class="program-status status-${program.status.toLowerCase()}">${program.status}</span>
@@ -228,7 +225,12 @@ function renderPrograms(filteredPrograms = programs) {
                 <button class="btn btn-secondary" onclick="event.stopPropagation(); viewIssues(${program.id})">View Issues</button>
             </div>
         </div>
-    `).join('');
+
+        <div class="program-logo">
+            <img src="${program.image}" alt="${program.name} logo" onerror="this.src='../assets/program_logo/placeholder.png'">
+        </div>
+    </div>
+`).join('');
 }
 
 // Open Modal
